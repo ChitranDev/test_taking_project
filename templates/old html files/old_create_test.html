@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+<style>
+    * {
+      font-family: Helvetica, sans-serif;
+    }
+  </style>
+<title>Create test</title>
+{% endblock %}
+
+{% block body %}
+<section class="page-section mt-0 " id="contact">
+  <div class="container mt-0 bg-secondary " style="border-radius: 2%;">
+    <!-- Contact Section Heading-->
+    <h2 class="page-section-heading text-center text-uppercase text-light mb-0  ">CREATE TEST-</h2>
+    <!-- Icon Divider-->
+    <div class="divider-custom">
+      <div class="divider-custom-line"></div>
+      <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+      <div class="divider-custom-line"></div>
+    </div>
+    <!-- subheading please make sure -->
+    <div class="d-flex justify-content-center alert alert-warning alert-dismissible fade show" role="alert">
+      <strong class="pr-2 ">Important!</strong>Please make sure you have selected every option.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <!-- Contact Section Form-->
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19.-->
+        <form id="contactForm" action='/' method='POST' name="sentMessage" novalidate="novalidate">
+          <div class="control-group mb-3">
+            <div style="border-radius: 2%;" class="form-group floating-label-form-group bg-light  controls mt-0 mb-0 pl-5 pb-2 ">
+              <label for="name">School Name</label>
+              <strong style="font-size: 1.5rem;">School Name:</strong><input class="form-control" id="name" type="text" placeholder="Enter School Name here..." name="school_name" required="required"
+                data-validation-required-message="Please enter your School Name." />
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group mb-3">
+            <div style="border-radius: 2%;" class="bg-light form-group floating-label-form-group controls mt-0 mb-0 pl-5 pb-2">
+              <label for="exampleFormControlSelect2">Class:</label>
+              <strong style="font-size: 1.5rem;">Class:</strong><select multiple class="form-control" id="exampleFormControlSelect2 " name="class">
+                <option>Class: 1</option>
+                <option>Class: 2</option>
+                <option>Class: 3</option>
+                <option>Class: 4</option>
+                <option>Class: 5</option>
+                <option>Class: 6</option>
+                <option>Class: 7</option>
+                <option>Class: 8</option>
+                <option>Class: 9</option>
+                <option>Class: 10</option>
+                <option>Class: 11</option>
+                <option>Class: 12</option>
+              </select>
+            </div>
+          </div>
+          <div class="control-group mb-3">
+            <div style="border-radius: 2%;" class="bg-light form-group floating-label-form-group controls mb-0 pl-5 pb-2">
+              <label for="exampleFormControlSelect2">no_of_questions:</label>
+              <strong style="font-size: 1.5rem;">No_of_questions:</strong><select multiple class="form-control" id="exampleFormControlSelect2 " name="no_of_ques">
+                <option>5 Questions</option>
+                <option>10 Questions</option>
+                <option>15 Questions</option>
+                <option>20 Questions</option>
+                <option>25 Questions</option>
+              </select>
+            </div>
+          </div>
+          <div class="control-group mb-3">
+            <div style="border-radius: 2%;" class="bg-light form-group floating-label-form-group controls mb-0 pl-5 pb-2">
+              <label>Type of question</label>
+              <strong style="font-size: 1.5rem;">Type of questions:</strong><select multiple class="form-control" id="exampleFormControlSelect2 " name="type_of_ques">
+                <option>MCQs type Questions</option>
+                <option>Long answer type Questions</option>
+                <option>Short answer type Questions</option>
+              </select>
+            </div>
+          </div>
+          <div class="control-group mb-3">
+            <div style="border-radius: 2%;" class="bg-light form-group floating-label-form-group controls mb-0 pl-5 pb-2">
+              <label>email</label>
+              <strong style="font-size: 1.5rem;">Email Address:</strong><input  class="form-control" id="phone" type="tel" placeholder="name@example.com" required="required"
+                name="email" data-validation-required-message="Please enter your email address." />
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group mb-3">
+            <div style="border-radius: 2%;" class="bg-light form-group floating-label-form-group controls mb-0 pl-5 pb-2">
+              <label>SUBJECT</label>
+              <strong style="font-size: 1.5rem;"> Subject:</strong><input class="form-control" id="phone" type="tel" placeholder="SUBJECT " required="required"
+                name="subject" data-validation-required-message="Please enter subject." />
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+         
+          <br />
+          <div id="success"></div>
+          <div class="form-group"><button class="btn btn-primary btn-xl" id="sendMessageButton"
+              type="submit">TELL QUSTIONS.</button></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

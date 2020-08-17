@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    
+    <title>Set Questions</title>
+   
+{% endblock %}
+
+
+{% block body %} 
+
+        <!-- multistep form -->
+    <form id="msform" action='/create_question/{{id}}' method='POST'>
+        <!-- progressbar -->
+        <ul id="progressbar">
+            <li class="active">Create Test</li>
+            <li class="active">Set Questions</li>
+            <li>DONE!</li>
+        </ul>
+        <!-- fieldsets -->
+        <fieldset style="width:93%; margin: 0px 4%;" >
+            <h2 class="fs-title">Set Questions</h2>
+            <h3 class="fs-subtitle">D'ont leave blank input boxes.</h3>
+            
+            {% for n in range(1,test+1) %}
+
+            <div style="margin:55px 10px 0px 0px">
+                <h4 style="display:float; float: left;">Question {{n}}-</h4>
+                <textarea style="height: 100px;" type="text" name="question_no_{{n}}" placeholder="Type answer no {{n}} here..." required="required" ></textarea>
+
+                <h6 style="display:float; float: left;">Select marks-</h6><select multiple required="required" name="marks_no_{{n}}" data-validation-required-message="Please select type of questions you want in your test.">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    
+                </select>
+            </div>
+            <hr>
+            
+
+            {% endfor %}
+            
+            <div>
+                <button class="next action-button" 
+                type="submit" >CREATE TEST.</button>
+            </div>
+        </fieldset>
+
+    </form>
+{% endblock %}
+

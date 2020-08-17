@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+<style>
+    * {
+        font-family: Helvetica, sans-serif;
+    }
+</style>
+<title>Online Test</title>
+{% endblock %}
+
+{% block body %}
+<section class="page-section mt-0 " id="contact">
+    <div class="container mt-0 bg-secondary " style="border-radius: 2%;">
+        <!-- Contact Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-light mb-1  ">{{teacher_info.subject}}: OnLine
+            Test</h2>
+        <h2 class="page-section-heading text-center text-uppercase text-light mb-1  ">{{teacher_info.school_name}}</h2>
+        <h5 class="page-section-heading text-center text-uppercase text-light mt-3 mb-0 ">
+            {{teacher_info.class_of_student}}</h5>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- Contact Section Form-->
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19.-->
+                <form id="contactForm" action='/test/{{id}}/' method='POST'
+                    name="sentMessage" novalidate="novalidate">
+                    <div class="control-group mb-3">
+                        <div style="border-radius: 2%;"
+                            class="form-group floating-label-form-group bg-light  controls mt-0 mb-0 pl-5 pb-0 ">
+                            <label for="validationCustom01"> Name</label>
+                            <strong style="font-size: 1.5rem;">Name:</strong><input class="form-control"
+                                id="validationCustom01" type="text" placeholder="Enter your Name here..." name="name"
+                                required="required" />
+                            <p class="help-block text-danger valid-feedback">Please enter your Name.</p>
+                        </div>
+                    </div>
+                    <div class="control-group mb-3">
+                        <div style="border-radius: 2%;"
+                            class="bg-light form-group floating-label-form-group controls mt-0 mb-0 pl-5 pb-2">
+                            <label for="exampleFormControlSelect2">Section:</label>
+                            <strong style="font-size: 1.5rem;">Section:</strong><select multiple class="form-control"
+                                id="exampleFormControlSelect2 " name="section">
+                                <option>{{teacher_info.class_of_student}} A</option>
+                                <option>{{teacher_info.class_of_student}} B</option>
+                                <option>{{teacher_info.class_of_student}} C</option>
+                                <option>{{teacher_info.class_of_student}} D</option>
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group mb-3">
+                        <div style="border-radius: 2%;"
+                            class="bg-light form-group floating-label-form-group controls mb-0 pl-5 pb-2">
+                            <label>Phone Number</label>
+                            <strong style="font-size: 1.5rem;">Phone Number:</strong><input class="form-control"
+                                id="phone" type="tel" placeholder="enter your phone number" required="required"
+                                name="phone" data-validation-required-message="Please enter your phone number." />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="control-group mb-3">
+                        <div style="border-radius: 2%;"
+                            class="bg-light form-group floating-label-form-group controls mb-0 pl-5 pb-2">
+                            <label>email</label>
+                            <strong style="font-size: 1.5rem;">Email Address:</strong><input class="form-control"
+                                id="email" type="tel" placeholder="name@example.com" required="required" name="email"
+                                data-validation-required-message="Please enter your email address." />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="control-group mb-3">
+                        <div style="border-radius: 2%;"
+                            class="bg-light form-group floating-label-form-group controls mb-0 pl-5 pb-2">
+                            <label>SUBJECT</label>
+                            <strong style="font-size: 1.5rem;"> Subject:</strong><input class="form-control" id="phone"
+                                type="tel" value="{{teacher_info.subject}}" required="required" name="subject"
+                                data-validation-required-message="Please enter subject." />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <br>
+                    <br />
+                    <h2 class="page-section-heading text-center text-uppercase text-light mb-1  ">Answer the following
+                        questions: </h2>
+                    <br>
+                    <!-- subheading please make sure -->
+                    <div class="d-flex justify-content-center alert alert-warning alert-dismissible fade show"
+                        role="alert">
+                        <strong class="pr-2 ">Important!</strong>It is necessary to give answer of each and every question.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    {% for ques in all_questions %}
+
+                    <div class="control-group mb-3">
+                        <div style="border-radius: 5%;"
+                            class="form-group floating-label-form-group bg-light  controls mt-0 mb-0 pl-5 pb-2 ">
+                            <div style="border-bottom:2px solid grey;">
+                                <h6 class="d-float float-right pr-2 pt-2">{{ques[-16:]}}</h6>
+                                <h2 class="pt-4">Q{{ques[0:2]}}. {{ques[2:-16]}}</h2>
+                                <!-- <h5>{{ques[-8:0]}}</h5> -->
+                                <!-- <label for="name">QUESTION </label> -->
+                                <strong style="font-size: 1.5rem; ">Answer:</strong><input class="form-control"
+                                    id="name" type="text" placeholder="Type Answer here..."
+                                    name="answer_no_{{ques[0:2]}}" required="required"
+                                    data-validation-required-message="Please enter your answer." />
+                                <label for="exampleFormControlSelect2">marks:</label>
+                            </div>
+
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <div id="success"></div>
+                    <div class="form-group"><button class="btn btn-primary btn-xl" id="sendMessageButton"
+                            type="submit">Submit.</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<style>
+    * {
+      font-family: Helvetica, sans-serif;
+    }
+  </style>
+<title>Define Questions</title>
+{% endblock %}
+
+{% block body %}
+<section class="page-section  " id="contact">
+    <div class="container  " style="border-radius: 2%; background-color: #243c54;">
+      <!-- Contact Section Heading-->
+      <h2 class="page-section-heading text-center text-uppercase text-light mb-0   " style="margin-top: 1px;">SET QUESTIONS-</h2>
+      <!-- Icon Divider-->
+      <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+        <div class="divider-custom-line"></div>
+      </div>
+
+    <!-- subheading please make sure -->
+    <div class="d-flex justify-content-center alert alert-warning alert-dismissible fade show" role="alert">
+      <strong class="pr-2 ">Important!</strong>Please make sure you have typed every question with question mark at last wherever required.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+      <!-- Contact Section Form-->
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19.-->
+          <form id="contactForm" action='/create_question/{{id}}' method='POST' name="sentMessage" novalidate="novalidate">
+            {% for n in range(1,test+1) %}
+
+            <div class="control-group mb-3">
+              <div style="border-radius: 5%;"
+                class="form-group floating-label-form-group bg-light  controls mt-0 mb-0 pl-5 pb-2 ">
+                <div style="border-bottom:2px solid grey;">
+                  <label for="name">QUESTION {{n}}</label>
+                <strong style="font-size: 1.5rem; ">Question {{n}}:</strong><input class="form-control" id="name"
+                  type="text" placeholder="Type question no. {{n}} here..." name="question_no_{{n}}" required="required"
+                  data-validation-required-message="Please enter your question no. {{n}}." />
+                <label for="exampleFormControlSelect2">marks:</label>
+                </div>
+                <em style="font-size: 1.3rem; ">Select Marks:</em><select multiple class="form-control"
+                  id="exampleFormControlSelect2 " name="marks_no_{{n}}">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+            </div>
+            {% endfor %}
+            <br />
+            <div id="success"></div>
+            <div class="form-group"><button class="btn btn-primary btn-xl" id="sendMessageButton"
+                type="submit">Create</button></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

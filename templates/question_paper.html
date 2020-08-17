@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    
+    <title>Online Maths test</title>
+    
+{% endblock %}
+
+
+{% block body %} 
+
+<!-- multistep form -->
+<form id="msform" action="/test/{{id}}/" method="POST" style="margin-top: 10px;">
+    <!-- top heading -->
+    <h1 style="color: white;  ">{{teacher_info.school_name}}</h1>
+    <h2 style="color: #fffefe73; margin-bottom: 50px; ">{{teacher_info.class_of_student}}</h2>
+
+    <!-- fieldsets -->
+    <fieldset>
+        <h1 class="fs-title" style="font-size: 1.2rem;">{{teacher_info.subject}}: OnLine
+            Test</h1>
+        <h3 class="fs-subtitle" style="width: 80%; margin: 0px 10%;">Submit your details, it is very necessary. Without you can not fill form</h3>
+
+
+        <!-- school Name -->
+        <div style="margin:50px 0px 10px 0px">
+            <h6 style="display:float; float: left;">Name-</h6><input type="text" name="name"
+                placeholder="Type your name here..." required="required" />
+        </div>
+
+        <!-- Email- -->
+        <div style="margin:5px 0px">
+            <h6 style="display:float; float: left;">Email-</h6><input type="text" required="required" name="email"
+                placeholder="email@example.com" />
+        </div>
+
+        <!-- class -->
+        <div style="margin:5px 0px">
+            <h6 style="display:float; float: left;">Class-</h6><select multiple required="required" name="section">
+                <option>{{teacher_info.class_of_student}}: A</option>
+                <option>{{teacher_info.class_of_student}}: B</option>
+                <option>{{teacher_info.class_of_student}}: C</option>
+                <option>{{teacher_info.class_of_student}}: D</option>
+
+            </select>
+        </div>
+
+        <!-- PHONE NUMBER -->
+        <div style="margin: 5px 0px">
+            <h6 style="display:float; float: left;">Phone number-</h6><input type="text" name="phone"
+                placeholder="Enter your phone number here..." required="required" />
+        </div>
+        
+        <!-- PHONE NUMBER -->
+        <div style="margin: 5px 0px">
+            <h6 style="display:float; float: left;">Subject-</h6><input type="text" name="subject"
+                value="{{teacher_info.subject}}" required="required" />
+        </div>
+
+        <h1 class="fs-title" style="font-size: 1.2rem; color: #2d5061; margin-top: 60px;">ANSWER THE FOLLOWING QUESTIONS:</h1>
+
+
+        {% for ques in all_questions %}
+
+        <div style="margin:55px 0px 0px 0px">
+            <h4 style="text-align: left;">Q{{ques[0:2]}}. {{ques[2:-16]}}</h4>
+            <h6 style="display:float; float: right; margin-top: 7px;">{{ques[-16:]}}</h6>
+            <h6 style="display:float; float: left; margin-top: 7px;">Answer:</h6>
+            <textarea type="text" name="answer_no_{{ques[0:2]}}" placeholder="Type answer no {{ques[0:2]}} here..." required="required" data-validation-required-message="Please enter school name."></textarea>
+            
+
+        </div>
+
+
+        {% endfor %}
+
+
+
+            <!-- set questions -->
+        <div>
+            <button class=" action-button"  type="submit">Submit</button>
+        </div>
+
+
+    </fieldset>
+</form>
+{% endblock %}
+

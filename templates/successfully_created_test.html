@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    
+    <title>Test Sucessfully Created</title>
+    
+{% endblock %}
+
+
+{% block body %}
+
+<!-- multistep form -->
+<form id="msform" action="/" method="POST">
+    <!-- progressbar -->
+    <ul id="progressbar">
+        <li class="active">Create Test</li>
+        <li class="active">Set Questions</li>
+        <li class="active">DONE!</li>
+    </ul>
+
+    <fieldset style="padding: 20px 25px ;">
+        <h1 class="fs-title" style="font-size: 1.5rem;">"Test" Created </h1> <h1  class="fs-title" style="font-size: 1.8rem;">Successfully!</h1>
+        <h3 class="fs-subtitle" style="margin-bottom: 20px;">Just copy test link from your email and forward it to students.</h3>
+
+        <!-- school Name -->
+        <div style="margin:5px 0px">
+            <h6 style="display:inline-block; margin-top: 16px;">Test link has been sent on your gmail address-  {{email_create_test}}</h6>
+            <h6 style="display:inline-block; margin-top: 8px; ">You can check the test created by you.</h6>
+            <h6 style="display:inline-block; margin-top: 4px; ">Link- http://127.0.0.1:5000/test/{{sno }}/</h6>
+        </div>
+        
+        <!-- set questions -->
+        <!-- todo: solve button click problem -->
+        <div>
+            <button class=" action-button" id="sendMessageButton"
+            type="submit" ><a style="text-decoration: none; color: white;" href="/test/{{sno }}/">Checkout</a></button>
+        </div>
+
+        <h3 class="fs-subtitle" style="margin-top:70px; ">After the student submitted the test, </h3>
+        <h2 class="fs-title" style="margin-bottom: 20px;">How will you check the test submitted? </h2>
+
+        <div style="margin:5px 0px">
+            <h6 style="display:inline-block; margin-top: 16px;">A link has been sent on your gmail address.</h6>
+            <h6 style="display:inline-block; margin-top: 4px; ">On clicking that link you will be referred to a page where you can give marks to the student based on their answer. Questions and answer will be displayed to you on the same page. <br> <br> After you save the marks you can relese the result by clicking on the link given on your gmail address. <br>More details are given on your email address.  </h6>
+        </div>
+
+        <div>
+            <button class=" action-button" id="sendMessageButton"
+            type="submit" ><a style="text-decoration: none; color: white;" href="/check_answer/{{sno}}/">Checkout</a></button>
+        </div>
+       
+        
+        <!-- Email- -->
+        <!-- <div style="margin:5px 0px">
+            <h6 style="padding-right:85%;">Email-</h6><input type="text" required="required" name="email" placeholder="email@example.com" data-validation-required-message="Please enter email address so that we can send further links to you." />
+        </div> -->
+    
+    </fieldset>
+</form>
+{% endblock %}
+
+
